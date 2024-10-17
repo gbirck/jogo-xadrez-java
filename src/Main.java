@@ -2,6 +2,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        Tabuleiro tabuleiro = new Tabuleiro(8,3);
+        PartidaXadrez partida = new PartidaXadrez();
+        UI.mostrarTabuleiro(partida.getPecas());
     }
 }
