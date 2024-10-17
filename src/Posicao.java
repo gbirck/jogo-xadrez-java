@@ -28,4 +28,9 @@ public class Posicao {
         setLinha(linha);
         setColuna(coluna);
     }
+
+    @Override
+    public String toString() {
+        return linha + ", " + coluna;
+    }
 }
