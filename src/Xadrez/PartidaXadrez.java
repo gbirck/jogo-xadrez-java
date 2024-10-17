@@ -1,19 +1,21 @@
 package Xadrez;
 
+import JogoTabuleiro.Peca;
+import JogoTabuleiro.Posicao;
 import JogoTabuleiro.Tabuleiro;
 import XadrezPecas.Rei;
 import XadrezPecas.Torre;
 
 public class PartidaXadrez {
 
-    private Tabuleiro tabuleiro;
+    private static Tabuleiro tabuleiro;
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8, 8);
         inicioJogo();
     }
 
-    public PecaXadrez[][] getPecas() {
+    public static PecaXadrez[][] getPecas() {
         PecaXadrez[][] mat = new PecaXadrez[tabuleiro.getLinhas()][tabuleiro.getColunas()];
         for (int i = 0; i < tabuleiro.getLinhas(); i++) {
             for (int j = 0; j < tabuleiro.getColunas(); j++) {
@@ -23,8 +25,29 @@ public class PartidaXadrez {
         return mat;
     }
 
+    public PecaXadrez fazerMovimentoXadrez(PosicaoXadrez posOrigem, PosicaoXadrez posDestino) {
+        Posicao inicial = posOrigem.toPosicao();
+        Posicao destino = posDestino.toPosicao();
+        validarPosicaoIncial(inicial);
+        Peca pecaCapturada = fazerMovimento(inicial, destino);
+        return (PecaXadrez)pecaCapturada;
+    }
+
+    private Peca fazerMovimento(Posicao origem, Posicao destino) {
+        Peca p = tabuleiro.removerPeca(origem);
+        Peca pecaCapturada = tabuleiro.removerPeca(destino);
+        tabuleiro.colocarPeca(p, destino);
+        return pecaCapturada;
+    }
+
+    private void validarPosicaoIncial(Posicao posicao) {
+        if (!tabuleiro.checagemPosicao(posicao)) {
+            throw new XadrezException("Nenhuma peça na posição original");
+        }
+    }
+
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca) {
-        tabuleiro.colocarPeca(peca, new PosicaoXadrez(coluna, linha).paraPosicao());
+        tabuleiro.colocarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
     }
 
     private void inicioJogo() {
