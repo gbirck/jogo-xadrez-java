@@ -1,3 +1,7 @@
+package App;
+
+import Xadrez.PecaXadrez;
+
 public class UI {
 
     public static void mostrarTabuleiro(PecaXadrez[][] pecas) {

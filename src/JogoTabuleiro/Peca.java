@@ -1,3 +1,5 @@
+package JogoTabuleiro;
+
 public class Peca {
 
     protected Posicao posicao;

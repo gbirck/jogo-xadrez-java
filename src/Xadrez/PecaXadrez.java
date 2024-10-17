@@ -1,3 +1,8 @@
+package Xadrez;
+
+import JogoTabuleiro.Peca;
+import JogoTabuleiro.Tabuleiro;
+
 public class PecaXadrez extends Peca {
 
     private Cor cor;

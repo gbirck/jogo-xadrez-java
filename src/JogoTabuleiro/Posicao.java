@@ -1,3 +1,5 @@
+package JogoTabuleiro;
+
 public class Posicao {
 
     private Integer linha;
