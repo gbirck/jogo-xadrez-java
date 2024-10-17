@@ -4,6 +4,7 @@ public class PartidaXadrez {
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8,8);
+        inicioJogo();
     }
 
     public PecaXadrez[][] getPecas() {
@@ -14,5 +15,11 @@ public class PartidaXadrez {
             }
         }
         return mat;
+    }
+
+    private void inicioJogo() {
+        tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.WHITE), new Posicao(2,1));
+        tabuleiro.colocarPeca(new Rei(tabuleiro, Cor.BLACK), new Posicao(0,4));
+        tabuleiro.colocarPeca(new Rei(tabuleiro, Cor.WHITE), new Posicao(7,4));
     }
 }

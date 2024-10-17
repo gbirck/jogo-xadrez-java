@@ -4,5 +4,6 @@ public class Main {
 
         PartidaXadrez partida = new PartidaXadrez();
         UI.mostrarTabuleiro(partida.getPecas());
+
     }
 }
