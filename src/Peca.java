@@ -1,16 +1,15 @@
 public class Peca {
 
     protected Posicao posicao;
+    private Tabuleiro tabuleiro;
 
-    public Peca(Posicao posicao) {
-        this.posicao = posicao;
+    public Peca(Tabuleiro tabuleiro) {
+        this.tabuleiro = tabuleiro;
+        posicao = null;
     }
 
-    public Posicao getPosicao() {
-        return posicao;
+    protected Tabuleiro getTabuleiro() {
+        return tabuleiro;
     }
 
-    public void setPosicao(Posicao posicao) {
-        this.posicao = posicao;
-    }
 }
