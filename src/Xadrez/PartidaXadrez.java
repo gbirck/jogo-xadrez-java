@@ -25,12 +25,18 @@ public class PartidaXadrez {
         return mat;
     }
 
+    public boolean[][] possiveisMovimentos(PosicaoXadrez posicaoOriginal) {
+        Posicao posicao = posicaoOriginal.toPosicao();
+        validarPosicaoOrigem(posicao);
+        return tabuleiro.peca(posicao).possiveisMovimentos();
+    }
+
     public PecaXadrez fazerMovimentoXadrez(PosicaoXadrez posOrigem, PosicaoXadrez posDestino) {
-        Posicao inicial = posOrigem.toPosicao();
+        Posicao origem = posOrigem.toPosicao();
         Posicao destino = posDestino.toPosicao();
-        validarPosicaoIncial(inicial);
-        validarPosicaoDestino(inicial, destino);
-        Peca pecaCapturada = fazerMovimento(inicial, destino);
+        validarPosicaoOrigem(origem);
+        validarPosicaoDestino(origem, destino);
+        Peca pecaCapturada = fazerMovimento(origem, destino);
         return (PecaXadrez)pecaCapturada;
     }
 
@@ -41,7 +47,7 @@ public class PartidaXadrez {
         return pecaCapturada;
     }
 
-    private void validarPosicaoIncial(Posicao posicao) {
+    private void validarPosicaoOrigem(Posicao posicao) {
         if (!tabuleiro.checagemPosicao(posicao)) {
             throw new XadrezException("Nenhuma peça na posição original");
         }
