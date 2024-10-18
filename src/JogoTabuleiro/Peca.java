@@ -1,6 +1,6 @@
 package JogoTabuleiro;
 
-public class Peca {
+public abstract class Peca {
 
     protected Posicao posicao;
     private Tabuleiro tabuleiro;
@@ -14,4 +14,21 @@ public class Peca {
         return tabuleiro;
     }
 
+    public abstract boolean[][] possiveisMovimentos();
+
+    public boolean possivelMovimento(Posicao posicao) {
+        return possiveisMovimentos()[posicao.getLinha()][posicao.getColuna()];
+    }
+
+    public boolean temAlgumMovimentoPossivel() {
+        boolean[][] mat = possiveisMovimentos();
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[i].length; j++) {
+                if (mat[i][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
